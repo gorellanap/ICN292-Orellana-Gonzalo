@@ -1,2 +1,3 @@
 # ICN292-Orellana-Gonzalo
-Repositorio en el que se desarrollarán y subirán archivos y más de SIG
+Gonzalo Joaquín Orellana Peña / gorellanap
+ICN-292, Segundo Semestre 2026
