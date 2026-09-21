@@ -1,0 +1,63 @@
+{
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 20
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "72f2856f-2ebf-44c9-8144-45b3061b57ff",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "const solicitudes = [\n  { id: \"DEV-1115\", monto: 19990, ruta: \"APROBACION\" },\n  { id: \"DEV-1116\", monto: 69980, ruta: \"APROBACION\" },\n  { id: \"DEV-1117\", monto: 24990, ruta: \"REVISION\" },\n  { id: \"DEV-1118\", monto: 79990, ruta: \"REVISION\" },\n  { id: \"DEV-1119\", monto: 45990, ruta: \"RECHAZO\" },\n  { id: \"DEV-1120\", monto: 89990, ruta: \"REVISION\" },\n  { id: \"DEV-1121\", monto: 289990, ruta: \"REVISION\" },\n  { id: \"DEV-1122\", monto: 45990, ruta: \"APROBACION\" },\n  { id: \"DEV-1123\", monto: 39980, ruta: \"RECHAZO\" },\n  { id: \"DEV-1124\", monto: 49980, ruta: \"APROBACION\" },\n  { id: \"DEV-1125\", monto: 34990, ruta: \"RECHAZO\" },\n  { id: \"DEV-1126\", monto: 79990, ruta: \"REVISION\" },\n  { id: \"DEV-C01\", monto: 9990, ruta: \"APROBACION\" },\n  { id: \"DEV-C02\", monto: 289990, ruta: \"REVISION\" },\n  { id: \"DEV-C03\", monto: 79990, ruta: \"RECHAZO\" }\n];\n\nlet ap = 0, rev = 0, rech = 0, totalMonto = 0;\n\nsolicitudes.forEach(item => {\n  totalMonto += item.monto;\n  if (item.ruta === \"APROBACION\") ap++;\n  else if (item.ruta === \"REVISION\") rev++;\n  else if (item.ruta === \"RECHAZO\") rech++;\n});\n\nconst total = solicitudes.length;\nconst tasaAprobacion = ((ap / total) * 100).toFixed(2) + \"%\";\n\nreturn [{\n  json: {\n    fecha_reporte: new Date().toISOString().split('T')[0],\n    total_solicitudes: total,\n    monto_total_procesado_clp: totalMonto,\n    conteo_aprobaciones: ap,\n    conteo_revisiones: rev,\n    conteo_rechazos: rech,\n    tasa_aprobacion_directa: tasaAprobacion\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "33d0009b-59b0-4e6c-88b7-9fe7c80e804e",
+      "name": "Resuem Diario"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Resuem Diario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "2832a195-db4d-4235-b88a-9345a4f943e7",
+  "meta": {
+    "instanceId": "b1fc1886f5fa3718cf8ec60a49d3184c39af892a15782c3b9035fcb0bdd7911c"
+  },
+  "nodeGroups": [],
+  "id": "znkdnrbBAGnh4yO4",
+  "tags": []
+}
