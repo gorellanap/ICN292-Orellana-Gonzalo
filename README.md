@@ -23,7 +23,7 @@ Este repositorio contiene la solución oficial del **Laboratorio 3**, implementa
 * `/ICN292-Lab3-Orellana-Gonzalo-triage.json` : Workflow principal de triage de devoluciones.
 * `/ICN292-Lab3-Orellana-Gonzalo-emisor.json` : Workflow emisor auxiliar para el lote de 15 solicitudes.
 * `/ICN292-Lab3-Orellana-Gonzalo-resumen.json` : Workflow programado de consolidación diaria (Schedule Trigger a las 20:00 hrs).
-* `/informe/ICN292-Lab3-Orellana-Gonzalo.pdf` : Informe escrito final en formato PDF (incluye Resumen Ejecutivo).
+* `/informe/ICN292-Lab3-Orellana-Gonzalo.pdf` : Informe escrito final en formato PDF 
 * `/informe/ICN292-Lab3-Orellana-Gonzalo.docx` : Copia editable en formato Word.
 
 ---
