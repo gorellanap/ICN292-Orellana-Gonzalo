@@ -1,0 +1,8 @@
+ICN292-Orellana-Gonzalo/
+├── README.md                                      <-- Documentación principal
+├── ICN292-Lab3-Orellana-Gonzalo-triage.json       <-- Workflow de Triage
+├── ICN292-Lab3-Orellana-Gonzalo-emisor.json       <-- Workflow Emisor (15 ítems)
+├── ICN292-Lab3-Orellana-Gonzalo-resumen.json      <-- Workflow de Resumen
+└── informe/
+    ├── ICN292-Lab3-Orellana-Gonzalo.pdf           <-- Informe final
+    └── ICN292-Lab3-Orellana-Gonzalo.docx          <-- Versión editable
