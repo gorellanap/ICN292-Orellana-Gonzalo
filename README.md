@@ -9,4 +9,5 @@
 ## 📚 Enlaces a Laboratorios
 
 * 📄 **[Laboratorio 3: Triage de Devoluciones en n8n](./lab-3/)**
-* 🗄️ **[Laboratorio 4: Reconstrucción y Consultas SQL (Austral Editores)](./lab-4/)**
+* 📄 **[Laboratorio 4: Reconstrucción y Consultas SQL (Austral Editores)](./lab-4/)**
+* 📄 **[Laboratorio 5: Reconstrucción y Consultas SQL (Andes Bike)](./lab-5/)**
