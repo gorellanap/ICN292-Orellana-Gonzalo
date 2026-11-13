@@ -87,7 +87,7 @@ select
     
 #Consultas
     
-#consulta 1
+#consulta1
 select
 	v.nombre as vendedor, count(ven.id_venta) as cantidad_ventas
     from vendedores v
@@ -95,7 +95,7 @@ select
     group by v.id_vendedor, v.nombre
     order by cantidad_ventas desc, v.nombre asc;
     
-#consulta 2
+#consulta2
 select
 	t.nombre as nombre_tienda, count(ven.id_venta) as cantidad_ventas, sum(ven.unidades) as total_unidades
     from tiendas t
@@ -104,14 +104,14 @@ select
     group by t.id_tienda, t.nombre
     order by total_unidades desc;
 
-#consulta 3 
+#consulta3 
 select
 	t.nombre as nombre_tienda, v.nombre as nombre_vendedor
     from tiendas t
     left join vendedores v on t.id_tienda = v.id_tienda
     where v.id_vendedor is null; 
     
-#consulta 4 
+#consulta4 
 select
 		b.modelo, b.categoria, ven.unidades
         from bicicletas b
@@ -119,7 +119,7 @@ select
         where ven.id_venta is null
         order by b.modelo desc;
         
-#consulta 5
+#consulta5
 select
 		vend.nombre as nombre_vendedor, t.nombre as nombre_tienda, vent.unidades as unidades_vendidas
         from vendedores vend
@@ -127,3 +127,70 @@ select
         left join tiendas t on vend.id_tienda = t.id_tienda
         where vent.id_venta is null
         order by vend.nombre asc;
+
+#consulta6
+select
+	vend1.nombre as vendedor_1,
+    vend1.fecha_ingreso as ingreso_1,
+    vend2.nombre as vendedor_2,
+    vend2.fecha_ingreso as ingreso_2,
+    t.nombre as tienda
+from vendedores vend1
+join vendedores vend2 on vend1.id_tienda = vend2.id_tienda
+	and vend1.fecha_ingreso < vend2.fecha_ingreso
+    join tiendas t on vend1.id_tienda = t.id_tienda
+    order by t.nombre, vend1.fecha_ingreso;
+	
+#consulta7 
+select
+	t.nombre as tienda, sum(b.precio * ven.unidades) as monto_total
+    from tiendas t
+    join vendedores vend on t.id_tienda = vend.id_tienda
+    join ventas ven on vend.id_vendedor = ven.id_vendedor
+    join bicicletas b on ven.id_bicicleta = b.id_bicicleta
+    where b.categoria in ("Montaña", "Ruta") 
+    group by t.nombre, t.id_tienda
+    having monto_total > 2000000
+    order by monto_total desc;
+    
+#consulta8
+select modelo, precio
+from bicicletas
+where precio > (select avg(precio) from bicicletas)
+order by precio desc; 
+
+#obtención valor promedio
+(select avg(precio) from bicicletas);
+
+#consulta9 
+select
+	vend.nombre as vendedor, avg(ven.unidades) as promedio_unidades
+    from vendedores vend
+    join ventas ven on ven.id_vendedor = vend.id_vendedor
+    group by vend.id_vendedor, vend.nombre
+    having promedio_unidades > (select avg(unidades) from ventas)
+    order by promedio_unidades desc, vend.nombre asc;
+
+#consulta10 
+select
+	vend.nombre as vendedor, sum(ven.unidades * b.precio) as monto_total
+    from vendedores vend
+    left join ventas ven on ven.id_vendedor = vend.id_vendedor
+    left join bicicletas b on ven.id_bicicleta = b.id_bicicleta
+    group by vend.id_vendedor, vend.nombre
+    order by monto_total desc;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
